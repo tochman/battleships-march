@@ -8,8 +8,8 @@ feature 'Starting a new game' do
 
   scenario 'I am asked what my name is' do
     visit '/'
-    click_link 'New Game'
-    expect(page).to have_content "What are your names, player 1 and player 2?"
+    click_button 'Play Now!'
+    expect(page).to have_content "Enter your names, player 1 and player 2:"
   end
 
   scenario 'I am asked to pass in two names in a form and press submit' do
