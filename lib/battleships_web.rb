@@ -1,3 +1,4 @@
+require './lib/player.rb'
 require 'sinatra/base'
 require 'byebug'
 
