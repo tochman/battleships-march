@@ -23,6 +23,6 @@ feature 'Starting a new game' do
       visit '/new_game'
       fill_in 'name', :with => nil
       click_on 'submit'
-      expect(page).to have_content "Whats your name"
+      expect(page).to have_content "Whats your name?"
   end
 end

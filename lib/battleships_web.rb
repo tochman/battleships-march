@@ -7,7 +7,7 @@ class BattleshipsWeb < Sinatra::Base
   enable :sessions
 
   get '/' do
-    @visitor = params[:name]
+    #@visitor = params[:name]
     erb :index
   end
 
@@ -18,15 +18,20 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   post '/new_game' do
-    @visitor = params[:name]
+    #@visitor = params[:name]
     session[:name] = params[:name]
-    erb :board
+     if session[:name] == ""
+      erb :new_game
+    else
+      erb :board
+    end
   end
 
-  get '/settings' do
-    @player_name = session[:name]
-    erb :settings
+  def name_required
+    puts "You need to type in a name."
+
   end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
