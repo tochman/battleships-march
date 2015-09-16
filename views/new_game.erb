@@ -1,1 +1,13 @@
-<p>What's your name?</p>
+
+<% unless @visitor %>
+  <p>Whats your name?</p>
+  <form action="/new_game" method="post" >
+  <input type="text" name ="name">
+  <input type="submit" value="submit">
+  </form>
+<% else %>
+  <p> Welcome <%= @visitor %></p>
+
+  <p> Welcome <%= session[:name] %></p>
+
+<% end %>

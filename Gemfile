@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'byebug'
 
 group :development, :test do
   gem 'capybara'
