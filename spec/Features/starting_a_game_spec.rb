@@ -19,6 +19,7 @@ feature 'Starting a new game' do
       click_on 'submit'
       # byebug
       expect(page).to have_content "Chris"
+      expect(page).to have_content "David"
   end
 
   #   scenario 'I need to put in a name to continue' do
