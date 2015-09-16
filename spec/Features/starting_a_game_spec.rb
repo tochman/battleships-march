@@ -12,21 +12,13 @@ feature 'Starting a new game' do
     expect(page).to have_content "Enter your names, player 1 and player 2:"
   end
 
-  scenario 'I am asked to pass in two names in a form and press submit' do
+  scenario "Enter 'Chris' and 'David' in the form and Submit" do
       visit '/new_game'
-      fill_in 'name', :with => 'Chris'
+      fill_in 'name1', :with => 'Chris'
       fill_in 'name2', :with => 'David'
       click_on 'submit'
       # byebug
       expect(page).to have_content "Chris"
       expect(page).to have_content "David"
   end
-
-  #   scenario 'I need to put in a name to continue' do
-  #     visit '/new_game'
-  #     fill_in 'name', :with => nil
-  #     click_on 'submit'
-  #     # byebug
-  #     expect(page).to have_content "What's your name"
-  # end
 end
