@@ -1,5 +1,10 @@
 require 'sinatra/base'
-
+require './lib/board.rb'
+require 'byebug'
+require './lib/player.rb'
+require './lib/cell.rb'
+require './lib/ship.rb'
+require './lib/water.rb'
 
 
 class BattleshipsWeb < Sinatra::Base
@@ -13,7 +18,6 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/new_game' do
   #@visitor = params[:name]
-  #byebug
   erb :new_game
   end
 
@@ -23,7 +27,14 @@ class BattleshipsWeb < Sinatra::Base
      if session[:name] == ""
       erb :new_game
     else
+      #1. Skapa Game.new
+      #2. Skapa Player med namnet
+      #3. Skapa en Board och tillskriv den till Player
+      @player = Player.new(session[:name])
+      @board = Board.new({size: 100, cell: Cell, number_of_pieces: 5})
+      @player.board = @board
       erb :board
+      byebug
     end
   end
 

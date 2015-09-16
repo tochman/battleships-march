@@ -19,6 +19,14 @@ class Board
     end.flatten.reduce(:merge)
   end
 
+  def create_grid_html size, cell
+    letter_range_based_on_size(size).map do |letter|
+      (1..dimension_size(size)).map do |number|
+        {"#{letter}#{number}".to_sym => cell.new }
+      end
+    end.flatten.reduce(:merge)
+  end
+
   def dimension_size size
     Math.sqrt(size).floor
   end
