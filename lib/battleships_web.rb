@@ -7,18 +7,18 @@ class BattleshipsWeb < Sinatra::Base
   enable :sessions
 
   get '/' do
-    @visitor = params[:name]
+    @player1 = params[:name]
     erb :index
   end
 
   get '/new_game' do
-  @visitor = params[:name]
+  @player1 = params[:name]
   erb :new_game
   end
 
   post '/new_game' do
     "Hello!"
-    @visitor = params[:name]
+    @player1 = params[:name]
     session[:name] = params[:name]
     erb :board
   end
