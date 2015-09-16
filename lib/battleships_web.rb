@@ -12,12 +12,12 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/new_game' do
-  #@visitor = params[:name]
-  #byebug
+  @visitor = params[:name]
   erb :new_game
   end
 
   post '/new_game' do
+    "Hello!"
     @visitor = params[:name]
     session[:name] = params[:name]
     erb :board

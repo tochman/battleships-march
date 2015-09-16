@@ -9,20 +9,23 @@ feature 'Starting a new game' do
   scenario 'I am asked what my name is' do
     visit '/'
     click_link 'New Game'
-    expect(page).to have_content "Whats your name?"
+    expect(page).to have_content "What's your name?"
   end
 
-  scenario 'I am asked to pass in my name in a form and press submit' do
+  scenario 'I am asked to pass in two names in a form and press submit' do
       visit '/new_game'
-      fill_in 'name', :with => 'Gustaf'
+      fill_in 'name', :with => 'Chris'
+      fill_in 'name2', :with => 'David'
       click_on 'submit'
-      expect(page).to have_content "Gustaf"
+      # byebug
+      expect(page).to have_content "Chris"
   end
 
-    scenario 'I need to put in a name to continue' do
-      visit '/new_game'
-      fill_in 'name', :with => nil
-      click_on 'submit'
-      expect(page).to have_content "Whats your name"
-  end
+  #   scenario 'I need to put in a name to continue' do
+  #     visit '/new_game'
+  #     fill_in 'name', :with => nil
+  #     click_on 'submit'
+  #     # byebug
+  #     expect(page).to have_content "What's your name"
+  # end
 end
