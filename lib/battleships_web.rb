@@ -24,7 +24,7 @@ class BattleshipsWeb < Sinatra::Base
     @player2 = params[:name2]
     session[:name] = params[:name]
     session[:name2] = params[:name2]
-    erb :board
+    erb :new_game
   end
 
   get '/settings' do
