@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'byebug'
 
 
 
@@ -22,8 +23,12 @@ class BattleshipsWeb < Sinatra::Base
     "Hello!"
     @player1 = params[:name]
     @player2 = params[:name2]
+    p1 = Player.new(@player1)
+    p2 = Player.new(@player2)
     session[:name] = params[:name]
     session[:name2] = params[:name2]
+    session[:p1] = p1
+    session[:p2] = p2
     erb :new_game
   end
 
