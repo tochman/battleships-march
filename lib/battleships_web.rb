@@ -3,7 +3,6 @@ require 'sinatra/base'
 require 'byebug'
 
 
-
 class BattleshipsWeb < Sinatra::Base
   set :views, proc {File.join(root, '..', 'views')}
   enable :sessions
