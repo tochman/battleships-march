@@ -34,7 +34,7 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/settings' do
-    @player_name = session[:name1]
+    @player1_name = session[:name1]
     @player2_name = session[:name2]
     erb :settings
   end
