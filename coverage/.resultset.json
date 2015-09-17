@@ -25,14 +25,6 @@
         1,
         1,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/David/battleships-march/spec/board_spec.rb": [
@@ -512,6 +504,6 @@
         null
       ]
     },
-    "timestamp": 1442416065
+    "timestamp": 1442481862
   }
 }
