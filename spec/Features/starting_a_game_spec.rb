@@ -1,10 +1,12 @@
 require 'spec_helper'
 
-feature 'Game setup' do
-  #   background do
-  #   User.make(:name => 'Gustaf')
-  # end
+def form_submit(name1, name2)
+  fill_in 'name1', with: name1
+  fill_in 'name2', with: name2
+  click_on 'submit'
+end
 
+feature 'Game setup' do
 
   feature 'Start view' do
 
@@ -31,18 +33,14 @@ feature 'Game setup' do
     end
 
     scenario 'render players name after successful submit' do
-      fill_in 'name1', with: 'Chris'
-      fill_in 'name2', with: 'David'
-      click_on 'submit'
+      form_submit('Chris', 'David')
       expect(current_path).to eq '/new_game'
       expect(page).to have_content 'Chris'
       expect(page).to have_content 'David'
     end
 
     scenario 'render form after unsuccessful submit' do
-      fill_in 'name1', with: ''
-      fill_in 'name2', with: 'David'
-      click_on 'submit'
+      form_submit('', 'David')
       expect(current_path).to eq '/new_game'
       expect(page).to have_content 'Enter your names, player 1 and player 2:'
       expect(page).to_not have_content 'David'
