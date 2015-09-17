@@ -1,4 +1,3 @@
-require 'spec_helper'
 
 def form_submit(name1, name2)
   fill_in 'name1', with: name1
@@ -47,8 +46,5 @@ feature 'Game setup' do
     end
 
   end
-
-
-
 
 end
