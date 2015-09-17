@@ -1,5 +1,12 @@
-  <p>Whats your name?</p>
+
+<% unless @name1 %>
+  <p>Enter your names, player 1 and player 2:</p>
   <form action="/new_game" method="post" >
-  <input type="text" name ="name">
-  <input type="submit" value="submit">
+    <input type="text" name ="name1">
+    <input type="text" name ="name2">
+    <input type="submit" value="submit">
   </form>
+<% else %>
+  <p> Welcome <%= @name1 %></p>
+  <p> Welcome <%= @name2 %></p>
+<% end %>

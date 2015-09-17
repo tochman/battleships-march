@@ -1,28 +1,56 @@
 require 'spec_helper'
 
-feature 'Starting a new game' do
+feature 'Game setup' do
   #   background do
   #   User.make(:name => 'Gustaf')
   # end
 
 
-  scenario 'I am asked what my name is' do
-    visit '/'
-    click_link 'New Game'
-    expect(page).to have_content "Whats your name?"
+  feature 'Start view' do
+
+    background do
+      visit '/'
+    end
+
+    scenario 'welcomes player' do
+      expect(page).to have_content 'Welcome to the Battleship game!'
+    end
+
+    scenario 'routes to /new_game' do
+      click_button 'Play Now!'
+      expect(current_path).to eq '/new_game'
+    end
   end
 
-  scenario 'I am asked to pass in my name in a form and press submit' do
+  feature 'players setup' do
+    background do
       visit '/new_game'
-      fill_in 'name', :with => 'Gustaf'
+    end
+    scenario 'asks for player names' do
+      expect(page).to have_content 'Enter your names, player 1 and player 2:'
+    end
+
+    scenario 'render players name after successful submit' do
+      fill_in 'name1', with: 'Chris'
+      fill_in 'name2', with: 'David'
       click_on 'submit'
-      expect(page).to have_content "Gustaf"
+      expect(current_path).to eq '/new_game'
+      expect(page).to have_content 'Chris'
+      expect(page).to have_content 'David'
+    end
+
+    scenario 'render form after unsuccessful submit' do
+      fill_in 'name1', with: ''
+      fill_in 'name2', with: 'David'
+      click_on 'submit'
+      expect(current_path).to eq '/new_game'
+      expect(page).to have_content 'Enter your names, player 1 and player 2:'
+      expect(page).to_not have_content 'David'
+    end
+
   end
 
-    scenario 'I need to put in a name to continue' do
-      visit '/new_game'
-      fill_in 'name', :with => nil
-      click_on 'submit'
-      expect(page).to have_content "Whats your name?"
-  end
+
+
+
 end
