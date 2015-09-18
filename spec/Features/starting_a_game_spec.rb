@@ -13,12 +13,8 @@ feature 'Game setup' do
       visit '/'
     end
 
-    scenario 'welcomes player' do
-      expect(page).to have_content 'Welcome to the Battleship game!'
-    end
-
     scenario 'routes to /new_game' do
-      click_button 'Play Now!'
+      click_link 'Play battleships [WIP]'
       expect(current_path).to eq '/new_game'
     end
   end
