@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
+    builder (3.2.2)
     byebug (6.0.2)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -86,6 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder
   byebug
   capybara
   coveralls

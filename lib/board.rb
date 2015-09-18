@@ -1,5 +1,5 @@
 class Board
-  DEFAULT_SIZE = 1
+  DEFAULT_SIZE = 10
   DEFAULT_NUMBER_OF_PIECES = 1
 
   attr_reader :grid, :number_of_pieces
@@ -19,12 +19,29 @@ class Board
     end.flatten.reduce(:merge)
   end
 
-  def create_grid_html size, cell
-    letter_range_based_on_size(size).map do |letter|
-      (1..dimension_size(size)).map do |number|
-        {"#{letter}#{number}".to_sym => cell.new }
+  require 'builder'
+  require 'byebug'
+  def table_builder
+    rows = get_grid_values
+    html = Builder::XmlMarkup.new(indent: 2)
+    html.table {
+      html.tr { [*'0'..'10'].each {|h| html.th(h)} }
+      rows.each do |row|
+        html.tr { row.each { |value| html.td(value.to_s) }}
       end
-    end.flatten.reduce(:merge)
+    }
+  end
+
+
+  def get_grid_values
+    grid_values = []
+    [*'A'..'J'].each do |letter|
+      row_hash = self.grid.select { |key, value| key.to_s.match(letter) }
+      arr = ["#{letter}"]
+      arr.push(row_hash.values.map {|v|v.content})
+      grid_values.push(arr.flatten)
+    end
+    grid_values
   end
 
   def dimension_size size
