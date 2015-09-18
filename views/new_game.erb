@@ -9,6 +9,11 @@
 <% else %>
     <h4>Board for <%= @name1 %></h4>
     <%= @html_board_p1 %>
+    <form action="/place_ships" method="post">
+      <input type="text" name ="[place_ship]ship_size" placeholder="Ship size">
+      <input type="text" name ="[place_ship]coord" placeholder="Coordinae">
+      <input type="submit" value="Place">
+    </form>
 
     <h4>Board for <%= @name2 %></h4>
     <%= @html_board_p2 %>

@@ -1,0 +1,16 @@
+<% unless @result %>
+    <p>Make your move:</p>
+    <form action="/rps" method="post" >
+      <select name ="move" >
+        <option value="rock">Rock</option>
+        <option value="paper">Paper</option>
+        <option value="scissors">Scissors</option>
+      </select>
+      <input type="submit" class="button" value="Play">
+    </form>
+<% else %>
+    <p>You draw: <%= @result[:player]  %></p>
+    <p>The computer draw: <%= @result[:computer]  %></p>
+    <h4><%= @result[:message] %></h4>
+    <a href="/rps" class="button">Play again</a>
+<% end %>
