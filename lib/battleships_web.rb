@@ -38,20 +38,21 @@ class BattleshipsWeb < Sinatra::Base
       session[:p1] = p1
       session[:p2] = p2
       @html_board_p1 = p1.board.table_builder
-      @html_board_p2 = p1.board.table_builder
+      @html_board_p2 = p2.board.table_builder
       erb :new_game
     end
   end
 
   post '/place_ships' do
-    #byebug
-    #{"place_ship"=>{"ship_name"=>"A", "coord"=>"a1", "direction"=>"right"}}
+
     settings = params[:place_ship]
-    ship = Ship.new(size: settings[:ship_size])
-    byebug
+    ship = Ship.new({size: settings[:ship_size].to_i})
     p1 = session[:p1]
-    p1.board.place(ship, settings[:coord])
-    erb :new_game
+    #byebug
+    p1.board.place(ship, settings[:coord].upcase.to_sym)
+    @html_board_p1 = p1.board.table_builder
+    #byebug
+    erb :board
   end
 
   get '/settings' do

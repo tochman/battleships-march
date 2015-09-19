@@ -1,5 +1,4 @@
 module RPS
-
   def self.computer_move
     %w(rock paper scissors).sample
   end

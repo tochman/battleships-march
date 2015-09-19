@@ -1,8 +1,8 @@
-<h1>Welcome <%= session[:name] %></h1>
-<%= session.inspect %>
-<h1>Min board</h1>
-<%= @player.board.grid.inspect %>
 
-<% @player.board.grid.each do |cell| %>
-  <%= cell.inspect %>
-<% end %>
+<h4>Board for <%= @name1 %></h4>
+<%= @html_board_p1 %>
+<form action="/place_ships" method="post">
+  <input type="text" name ="[place_ship]ship_size" placeholder="Ship size">
+  <input type="text" name ="[place_ship]coord" placeholder="Coordinae">
+  <input type="submit" value="Place">
+</form>

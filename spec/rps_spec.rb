@@ -36,7 +36,6 @@ describe RPS do
     end
   end
 
-
   describe 'computer wins' do
     it 'if player = scissors & computer = rock' do
       allow(RPS).to receive(:computer_move).and_return('rock')
